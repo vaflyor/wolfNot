@@ -10,8 +10,8 @@ const Header = () => {
     const sendDataToServer = async () => {
         try {
             await axios.post('http://localhost:80/api/data', {
-                // telegramId: tg.initDataUnsafe?.user?.id
-                telegramId: 'Hello world'
+                value: tg.initDataUnsafe?.user?.id
+                // value: 'Hello world'
             })
         } catch (error) {
             console.error('Error sending data:', error);
