@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <div>
             Header
-            <p>{tg.initDataUnsafe?.user?.username}</p>
+            <p>{tg.initDataUnsafe?.user?.id}</p>
         </div>
     );
 };
