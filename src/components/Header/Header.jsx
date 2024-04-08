@@ -1,16 +1,28 @@
 import React from 'react';
-import './Header.css'
-import {useTelegram} from '../../hooks/useTelegram'
+import axios from "axios";
+import './Header.css';
+import {useTelegram} from '../../hooks/useTelegram';
 
 
 const Header = () => {
     const {tg} = useTelegram()
+
+    const sendDataToServer = async () => {
+        try {
+            await axios.post('http://localhost:80/api/data', {
+                telegramId: tg.initDataUnsafe?.user?.id
+            })
+        } catch (error) {
+            console.error('Error sending data:', error);
+        }
+    };
+
     return (
         <div>
-            Header
             <p>{tg.initDataUnsafe?.user?.id}</p>
+            <button onClick={sendDataToServer}>Send Data</button>
         </div>
-    );
+    )
 };
 
 export default Header;
