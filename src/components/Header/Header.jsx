@@ -4,11 +4,11 @@ import {useTelegram} from '../../hooks/useTelegram'
 
 
 const Header = () => {
-    const {user} = useTelegram()
+    const {tg} = useTelegram()
     return (
         <div>
             Header
-            <p>{user?.id}</p>
+            <p>{tg.initDataUnsafe?.user?.username}</p>
         </div>
     );
 };
