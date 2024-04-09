@@ -1,29 +1,34 @@
-import React from 'react';
-import axios from "axios";
-import './Header.css';
-import {useTelegram} from '../../hooks/useTelegram';
-
+import React, { useState, useEffect } from 'react';
+import { sendTgId } from '../../hooks/api';
+import {useTelegram} from "../../hooks/useTelegram";
 
 const Header = () => {
+    const [userData, setUserData] = useState(null);
+    const [error, setError] = useState('');
     const {tg} = useTelegram()
 
-    const sendDataToServer = async () => {
-        try {
-            await axios.post('http://localhost:80/api/data', {
-                value: tg.initDataUnsafe?.user?.id
-                // value: 'Hello world'
-            })
-        } catch (error) {
-            console.error('Error sending data:', error);
-        }
-    };
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // const response = await sendTgId({ tgId: 544362566 });
+                const response = await sendTgId({ tgId: tg?.initDataUnsafe?.user?.id ||  444555666});
+                setUserData(response.data);
+                setError('');
+            } catch (error) {
+                setError('Error fetching user data');
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <div>
-            <p>{tg.initDataUnsafe?.user?.id}</p>
-            <button onClick={sendDataToServer}>Send Data</button>
+            <p>{userData ? `Balance: ${userData.coins}` : ''}</p>
+            {error && <p>{error}</p>}
         </div>
-    )
+    );
 };
 
 export default Header;
