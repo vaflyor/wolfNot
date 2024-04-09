@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=PT+Sans+Narrow&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +7,16 @@
 }
 
 body {
+    font-family: "Anton", sans-serif;
     background-color: var(--tg-theme-bg-color);
     color: var(--tg-theme-text-color);
+    font-size: 25px;
+}
+
+img {
+    max-width: 100%;
+}
+
+button {
+    cursor: pointer;
 }

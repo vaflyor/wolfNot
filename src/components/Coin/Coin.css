@@ -1,5 +1,5 @@
 .coin-wrapper {
-    margin: 30px auto;
+    margin: 50px auto;
     max-width: 700px;
     display: flex;
     flex-direction: column;
@@ -12,13 +12,15 @@
 }
 
 .main-btn {
-    margin-top: 20px;
+    margin-top: 40px;
     width: 70%;
     padding: 7px 0;
+    font-family: "Anton", sans-serif;
+    font-size: 20px;
 }
 
 .coin-img {
     cursor: pointer;
     margin: auto;
-    width: 500px;
+    width: 350px;
 }
