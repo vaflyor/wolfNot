@@ -1,19 +1,15 @@
 import React from 'react';
 import './Coin.css';
+import { sendBalanceToServer } from '../../hooks/api';
 
-const Coin = ({increaseBalance}) => {
-    // Додаємо обробник подій для кліку на монеті
-    const handleClick = () => {
+const Coin = ({ increaseBalance }) => {
+    const handleClick = async () => {
         increaseBalance();
+        const storedBalance = localStorage.getItem('balance');
     };
-
     return (
         <div className={'coin-wrapper'}>
-            {/* Додаємо обробник подій для кліку на монеті */}
             <img className={'coin-img'} src={'./media/coin.png'} alt={'Coin'} onClick={handleClick} />
-            <div className={'main-btn__wrapper'}>
-                <button className={'main-btn'}>Claim</button>
-            </div>
         </div>
     );
 };

@@ -10,4 +10,14 @@ const sendTgId = async (data) => {
     }
 };
 
-export {sendTgId};
+const sendBalanceToServer = async (balance) => {
+    try {
+        const response = await axios.post('http://localhost:80/update-balance', { balance });
+        return response;
+    } catch (error) {
+        console.error('Error sending balance:', error);
+        throw error;
+    }
+};
+
+export {sendTgId, sendBalanceToServer};
