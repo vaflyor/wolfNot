@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
-import { sendTgId } from '../../hooks/api';
+import { sendTgId, updateBalance } from '../../hooks/api';
 import { useTelegram } from "../../hooks/useTelegram";
 import Coin from "../Coin/Coin";
 import { getStoredBalance, setStoreBalance } from "../../utils/localStorageUtils";
@@ -43,6 +43,23 @@ const Header = () => {
             return { ...prevData, coins: newBalance };
         });
     };
+
+    window.addEventListener("beforeunload", async function () {
+        const balanceFromLocalStorage = localStorage.getItem("balance");
+
+        if (balanceFromLocalStorage) {
+
+            const dataToSend = { balance: balanceFromLocalStorage };
+            try {
+                const response = await updateBalance(dataToSend);
+                console.log('Data sent successfully:', response);
+            } catch (error) {
+                console.error('Error sending data:', error);
+            }
+        } else {
+            console.warn('No balance value found in localStorage.');
+        }
+    });
 
     return (
         <div className={'header'}>

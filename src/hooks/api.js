@@ -10,14 +10,14 @@ const sendTgId = async (data) => {
     }
 };
 
-const sendBalanceToServer = async (balance) => {
+const updateBalance = async (data) => {
     try {
-        const response = await axios.post('http://localhost:80/update-balance', { balance });
+        const response = await axios.post('http://localhost:80/update-balance', data);
         return response;
     } catch (error) {
-        console.error('Error sending balance:', error);
+        console.error('Error sending data:', error);
         throw error;
     }
 };
 
-export {sendTgId, sendBalanceToServer};
+export { sendTgId, updateBalance };

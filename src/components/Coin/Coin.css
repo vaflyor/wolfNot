@@ -6,19 +6,6 @@
     gap: 5px;
 }
 
-.main-btn__wrapper {
-    display: flex;
-    justify-content: center;
-}
-
-.main-btn {
-    margin-top: 40px;
-    width: 70%;
-    padding: 7px 0;
-    font-family: "Anton", sans-serif;
-    font-size: 20px;
-}
-
 .coin-img {
     cursor: pointer;
     margin: auto;
