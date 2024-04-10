@@ -52,7 +52,8 @@ const Header = () => {
                 localStorage.removeItem('balance');
 
                 const dataToSend = {
-                    tgId: 444555666,
+                    // tgId: 444555666,
+                    tgId: tg?.initDataUnsafe?.user?.id,
                     balance: balanceFromLocalStorage
                 };
                 const response = await updateBalance(dataToSend);
