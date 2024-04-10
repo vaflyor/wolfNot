@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import './Header.css';
-import { sendTgId, updateBalance } from '../../hooks/api';
-import { useTelegram } from "../../hooks/useTelegram";
+import {sendTgId, updateBalance} from '../../hooks/api';
+import {useTelegram} from "../../hooks/useTelegram";
 import Coin from "../Coin/Coin";
-import { getStoredBalance, setStoreBalance } from "../../utils/localStorageUtils";
+import {getStoredBalance, setStoreBalance} from "../../utils/localStorageUtils";
 
 const Header = () => {
     const [userData, setUserData] = useState(null);
     const [error, setError] = useState('');
-    const { tg } = useTelegram();
+    const {tg} = useTelegram();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const storedBalance = getStoredBalance();
                 if (storedBalance !== null) {
-                    setUserData({ coins: storedBalance });
+                    setUserData({coins: storedBalance});
                 } else {
                     const tgId = tg?.initDataUnsafe?.user?.id || 444555666;
-                    const response = await sendTgId({ tgId });
+                    const response = await sendTgId({tgId});
 
                     if (response && response.data && response.data.coins !== undefined) {
                         setUserData(response.data);
@@ -40,7 +40,7 @@ const Header = () => {
         setUserData(prevData => {
             const newBalance = (prevData.coins || 0) + 1;
             setStoreBalance(newBalance);
-            return { ...prevData, coins: newBalance };
+            return {...prevData, coins: newBalance};
         });
     };
 
@@ -48,9 +48,13 @@ const Header = () => {
         const balanceFromLocalStorage = localStorage.getItem("balance");
 
         if (balanceFromLocalStorage) {
-
-            const dataToSend = { balance: balanceFromLocalStorage };
             try {
+                localStorage.removeItem('balance');
+
+                const dataToSend = {
+                    tgId: 444555666,
+                    balance: balanceFromLocalStorage
+                };
                 const response = await updateBalance(dataToSend);
                 console.log('Data sent successfully:', response);
             } catch (error) {
@@ -61,13 +65,14 @@ const Header = () => {
         }
     });
 
+
     return (
         <div className={'header'}>
             <div className={'header-container'}>
                 <p>{userData ? `Balance: ${userData.coins}` : ''}</p>
                 {error && <p>{error}</p>}
             </div>
-            <Coin increaseBalance={increaseBalance} />
+            <Coin increaseBalance={increaseBalance}/>
         </div>
     );
 };
