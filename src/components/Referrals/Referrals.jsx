@@ -3,27 +3,28 @@ import './Referrals.css';
 import { getReferralList } from "../../hooks/api";
 import { useTelegram } from "../../hooks/useTelegram";
 
-const Referrals = ({ setError }) => {
+const Referrals = () => {
     const { tg } = useTelegram();
     const [userList, setUserList] = useState([]);
+    const [referralLink, setReferralLink] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
                 const referralList = await getReferralList({ tgId });
-                setUserList(referralList.data);
+                setUserList(referralList.data.referrals);
+                setReferralLink(referralList.data.referralLink.referralLink);
             } catch (error) {
-                setError('Error fetching user data');
                 console.error('Error fetching user data:', error);
             }
         };
 
         fetchData();
-    }, [tg, setError]);
+    }, [tg]);
 
     const copyReferralLinkToClipboard = (referralLink) => {
-        return navigator.clipboard.writeText(referralLink)
+        return navigator.clipboard.writeText(referralLink);
     };
 
     return (
@@ -52,7 +53,7 @@ const Referrals = ({ setError }) => {
                     <img className={'referral-img'} src={'./media/coins-solid.svg'} alt={'coin'}/>
                 </p>
                 <p className={'referral-adress'}>
-                    Click <span onClick={() => copyReferralLinkToClipboard(userList[0]?.referralLink)}>here</span> to copy your referral address
+                    Click <span onClick={() => copyReferralLinkToClipboard(referralLink)}>here</span> to copy your referral address
                 </p>
             </div>
         </div>
