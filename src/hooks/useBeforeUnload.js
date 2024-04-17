@@ -11,8 +11,8 @@ export const useBeforeUnload = (userData, tg) => {
                     localStorage.removeItem('balance');
 
                     const dataToSend = {
-                        // tgId: tg?.initDataUnsafe?.user?.id,
-                        tgId: 135792468,
+                        tgId: tg?.initDataUnsafe?.user?.id,
+                        // tgId: 135792468,
                         balance: balanceFromLocalStorage
                     };
                     const response = await updateBalance(dataToSend);
