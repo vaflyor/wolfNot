@@ -1,0 +1,23 @@
+footer {
+    width: 90%;
+    margin-top: auto;
+    margin-left: calc((100vw - 90%)/2);
+    background-color: rgba(103, 103, 103, 0.5);
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.footer_nav-list {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer_nav-item {
+    margin: 15px auto;
+}
+
+.footer_nav-img {
+    height: 22px;
+    display: block;
+    margin: auto;
+}

@@ -11,7 +11,8 @@ export const useBeforeUnload = (userData, tg) => {
                     localStorage.removeItem('balance');
 
                     const dataToSend = {
-                        tgId: tg?.initDataUnsafe?.user?.id,
+                        // tgId: tg?.initDataUnsafe?.user?.id,
+                        tgId: 135792468,
                         balance: balanceFromLocalStorage
                     };
                     const response = await updateBalance(dataToSend);
@@ -20,7 +21,7 @@ export const useBeforeUnload = (userData, tg) => {
                     console.error('Error sending data:', error);
                 }
             } else {
-                console.warn('No balance value found in localStorage.');
+                console.warn('No balance value found.');
             }
         };
 
