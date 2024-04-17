@@ -19,7 +19,7 @@ const Home = () => {
                 if (storedBalance !== null) {
                     setUserData({ coins: storedBalance });
                 } else {
-                    const tgId = tg?.initDataUnsafe?.user?.id || 135792468;
+                    const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
                     const response = await sendTgId({ tgId });
 
                     if (response && response.data && response.data.coins !== undefined) {

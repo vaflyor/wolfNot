@@ -1,0 +1,42 @@
+.modal {
+    display: block;
+    position: fixed;
+    width: 90%;
+    margin: auto;
+    z-index: 1;
+    top: 0;
+    background-color: gray;
+    padding: 20px;
+    animation-name: slideInDown;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    border: 1px solid #ffffff22;
+    background-color: #282c34;
+    background: linear-gradient(0deg, rgba(40,44,52,1) 0%, rgba(17,0,32,.5) 100%);
+    box-shadow: 0 7px 20px 5px #00000088;
+    border-radius: .7rem;
+    backdrop-filter: blur(7px);
+}
+
+@keyframes slideInDown {
+    0% {
+        transform: translateY(-110px);
+        visibility: visible;
+    }
+    100% {
+        transform: translateY(50px);
+    }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+}

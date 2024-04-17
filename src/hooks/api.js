@@ -30,4 +30,14 @@ const getReferralList = async (data) => {
     }
 };
 
+const boost = async (data) => {
+    try {
+        const response = await axios.post('http://localhost:80/referral', data);
+        return response;
+    } catch (error) {
+        console.error('Error sending data:', error);
+        throw error;
+    }
+};
+
 export { sendTgId, updateBalance, getReferralList};

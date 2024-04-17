@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './Referrals.css';
 import { getReferralList } from "../../hooks/api";
 import { useTelegram } from "../../hooks/useTelegram";
+import Modal from '../Modal/Modal';
 
 const Referrals = () => {
     const { tg } = useTelegram();
     const [userList, setUserList] = useState([]);
     const [referralLink, setReferralLink] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,8 +25,16 @@ const Referrals = () => {
         fetchData();
     }, [tg]);
 
-    const copyReferralLinkToClipboard = (referralLink) => {
-        return navigator.clipboard.writeText(referralLink);
+    const copyReferralLinkToClipboard = async (referralLink) => {
+        try {
+            await navigator.clipboard.writeText(referralLink);
+            setIsModalOpen(true);
+            setTimeout(() => {
+                setIsModalOpen(false);
+            }, 1500);
+        } catch (error) {
+            console.error('Error copying referral link to clipboard:', error);
+        }
     };
 
     return (
@@ -56,6 +66,7 @@ const Referrals = () => {
                     Click <span onClick={() => copyReferralLinkToClipboard(referralLink)}>here</span> to copy your referral address
                 </p>
             </div>
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
     );
 };
