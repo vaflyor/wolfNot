@@ -40,4 +40,4 @@ const getReferralList = async (data) => {
 //     }
 // };
 
-export { sendTgId, updateBalance, getReferralList};
+export {sendTgId, updateBalance, getReferralList};

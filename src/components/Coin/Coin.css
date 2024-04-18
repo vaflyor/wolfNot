@@ -1,5 +1,5 @@
 .coin-wrapper {
-    margin: 50px auto;
+    margin: 50px auto 0;
     max-width: 700px;
     display: flex;
     flex-direction: column;

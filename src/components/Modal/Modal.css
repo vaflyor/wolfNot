@@ -8,7 +8,7 @@
     background-color: gray;
     padding: 20px;
     animation-name: slideInDown;
-    animation-duration: 1s;
+    animation-duration: .2s;
     animation-fill-mode: both;
     border: 1px solid #ffffff22;
     background-color: #282c34;

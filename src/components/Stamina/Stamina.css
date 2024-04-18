@@ -1,0 +1,10 @@
+#stamina {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.stamina-bolt {
+    height: 30px;
+    margin-right: 5px;
+}

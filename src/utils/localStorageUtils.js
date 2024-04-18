@@ -3,6 +3,11 @@ export const getStoredBalance = () => {
     return storedBalance ? parseInt(storedBalance) : null;
 };
 
-export const setStoreBalance = (balance) => {
-    localStorage.setItem('balance', balance);
+export const setStoredBalance = balance => localStorage.setItem('balance', balance);
+
+export const getStoredStamina = () => {
+    const storedStamina = localStorage.getItem('stamina');
+    return storedStamina ? parseInt(storedStamina) : null;
 };
+
+export const setStoredStamina = stamina => localStorage.setItem('stamina', stamina);

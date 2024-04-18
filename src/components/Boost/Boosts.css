@@ -19,6 +19,7 @@
 }
 
 .boost__block-wrapper {
+    cursor: pointer;
     display: flex;
     gap: 30px;
     align-items: center;
@@ -30,6 +31,88 @@
 .boost__block-p span {
     margin-left: 8px;
     color: gray;
+}
+
+
+
+
+
+
+
+.modal-window {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.15);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.modal-window:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-window > div {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    background-color: #282c34;
+    box-shadow: 0 7px 20px 5px #00000088;
+}
+
+.modal-window > div > div {
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.modal-btn{
+    background-color: #4682fa;
+    padding: 5px 60px;
+    font-size: 18px;
+    color: #282c34;
+    border-radius: 3px;
+}
+
+.modal-h {
+    font-size: 22px;
+    margin: 0 0 15px;
+}
+
+.modal-close {
+    color: #aaa;
+    line-height: 50px;
+    font-size: 15px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 70px;
+    text-decoration: none;
+}
+
+.modal-close:hover {
+    color: black;
+}
+
+.container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-window > div:not(:last-of-type) {
+    margin-bottom: 15px;
 }
 
 
