@@ -41,33 +41,32 @@ const Home = () => {
         fetchData();
     }, [tg]);
 
-    const fetchStaminaLimit = async () => {
-        const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
-        try {
-            const response = await sendTgId({tgId});
-            if (response && response.data && response.data.staminaLimit !== undefined) {
-                setStaminaLimit(response.data.staminaLimit);
-
-                const storedStamina = getStoredStamina();
-
-                if (storedStamina) {
-                    setStamina(storedStamina);
-                    console.log(storedStamina);
-                } else {
-                    setStamina(response.data.stamina);
-                }
-                setError('');
-            } else {
-                throw new Error('Invalid stamina limit data received');
-            }
-        } catch (error) {
-            setError('Error fetching stamina limit');
-            console.error('Error fetching stamina limit:', error);
-        }
-    };
-
     useEffect(() => {
-        fetchStaminaLimit();
+        const fetchStaminaLimit = async () => {
+            const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
+            try {
+                const response = await sendTgId({tgId});
+                if (response && response.data && response.data.staminaLimit !== undefined) {
+                    setStaminaLimit(response.data.staminaLimit);
+
+                    const storedStamina = getStoredStamina();
+
+                    if (storedStamina) {
+                        setStamina(storedStamina);
+                        console.log(storedStamina);
+                    } else {
+                        setStamina(response.data.stamina);
+                    }
+                    setError('');
+                } else {
+                    throw new Error('Invalid stamina limit data received');
+                }
+            } catch (error) {
+                setError('Error fetching stamina limit');
+                console.error('Error fetching stamina limit:', error);
+            }
+        };
+        fetchStaminaLimit()
     }, []);
 
     useEffect(() => {
@@ -106,7 +105,6 @@ const Home = () => {
             });
         }
     };
-
 
     return (
         <div id="home">
