@@ -4,7 +4,7 @@ import Coin from "../components/Coin/Coin";
 import Stamina from "../components/Stamina/Stamina";
 import {useTelegram} from "../hooks/useTelegram";
 import {sendTgId} from '../hooks/api';
-import {getStoredBalance, setStoredBalance, getStoredStamina, setStoredStamina} from '../utils/localStorageUtils';
+import {setStoredBalance, getStoredStamina, setStoredStamina} from '../utils/localStorageUtils';
 import {useBeforeUnload} from '../hooks/useBeforeUnload';
 
 const Home = () => {

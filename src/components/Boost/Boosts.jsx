@@ -58,7 +58,7 @@ const Boost = () => {
                                 <span>500</span><img className={'popup-coin'} src={'./media/coins-solid.svg'}
                                                      alt={'coin'}/>
                             </div>
-                            <a onClick={closeModal} href="#" className={'modal-btn'}>Confirm</a>
+                            <a onClick={closeModal} href="https://google.com" className={'modal-btn'}>Confirm</a>
                         </div>
                     </div>
                 </div>
