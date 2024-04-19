@@ -7,7 +7,7 @@ export const useBeforeUnload = (userData, tg) => {
             const balanceFromLocalStorage = localStorage.getItem("balance");
             const staminaFromLocalStorage = localStorage.getItem("stamina");
 
-            if (balanceFromLocalStorage && staminaFromLocalStorage) {
+            if (balanceFromLocalStorage || staminaFromLocalStorage) {
                 try {
                     localStorage.removeItem('balance');
                     localStorage.removeItem('stamina');

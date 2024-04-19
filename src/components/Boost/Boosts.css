@@ -22,10 +22,16 @@
     cursor: pointer;
     display: flex;
     gap: 30px;
+    margin-bottom: 10px;
     align-items: center;
     border: 1px solid gray;
     border-radius: 12px;
     padding: 17px 25px;
+    width: 100%;
+    background-color: transparent;
+    color: inherit;
+    font-size: 16px;
+    text-align: left;
 }
 
 .boost__block-p span {
@@ -33,87 +39,66 @@
     color: gray;
 }
 
-
-
-
-
-
-
-.modal-window {
+.popup {
     position: fixed;
-    background-color: rgba(255, 255, 255, 0.15);
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     z-index: 999;
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s;
     text-align: center;
-}
-
-.modal-window:target {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.modal-window > div {
-    width: 90%;
-    position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 50vh;
+    border-radius: 13px 13px 0 0;
+    bottom: -50vh;
+    transform: translateX(-50%);
     padding: 2em;
     background-color: #282c34;
-    box-shadow: 0 7px 20px 5px #00000088;
+    box-shadow: 17px 0 20px 15px #00000088;
+    animation: slideIn .3s forwards;
 }
 
-.modal-window > div > div {
-    font-size: 17px;
-    margin-bottom: 15px;
+@keyframes slideIn {
+    0% {
+        bottom: -50vh;
+    }
+    100% {
+        bottom: 0;
+    }
 }
 
-.modal-btn{
-    background-color: #4682fa;
-    padding: 5px 60px;
-    font-size: 18px;
-    color: #282c34;
-    border-radius: 3px;
-}
-
-.modal-h {
-    font-size: 22px;
-    margin: 0 0 15px;
-}
-
-.modal-close {
-    color: #aaa;
-    line-height: 50px;
-    font-size: 15px;
+.close {
     position: absolute;
-    right: 0;
-    text-align: center;
-    top: 0;
-    width: 70px;
-    text-decoration: none;
+    top: 10px;
+    right: 20px;
 }
 
-.modal-close:hover {
-    color: black;
+.popup-content div {
+    margin-top: 7px;
 }
 
-.container {
-    display: grid;
+.popup-content-wrapper h3{
+    margin-bottom: 30px;
+}
+
+.popup-content-wrapper div{
+    display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 70px;
 }
 
-.modal-window > div:not(:last-of-type) {
-    margin-bottom: 15px;
+.popup-content-wrapper span {
+    display: block;
+    font-size: 30px;
 }
 
+.modal-btn {
+    background-color: #4682fa;
+    width: 90%;
+    margin: auto;
+    padding: 10px 90px;
+    border-radius: 6px;
+}
 
-
+.popup-coin {
+    width: 30px;
+    margin-left: 5px;
+}

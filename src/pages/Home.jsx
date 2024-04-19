@@ -18,19 +18,28 @@ const Home = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const storedBalance = getStoredBalance();
-                if (storedBalance !== null) {
-                    setUserData({coins: storedBalance});
-                } else {
-                    const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
-                    const response = await sendTgId({tgId});
+                const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
 
-                    if (response && response.data && response.data.coins !== undefined) {
+                const response = await sendTgId({tgId});
+                if (response && response.data) {
+                    if (response.data.coins !== undefined) {
                         setUserData(response.data);
-                        setError('');
-                    } else {
-                        throw new Error('Invalid user data received');
                     }
+                    if (response.data.staminaLimit !== undefined) {
+                        setStaminaLimit(response.data.staminaLimit);
+                    }
+
+                    // Check if stamina exists in local storage, otherwise, use data from response
+                    const storedStamina = getStoredStamina();
+                    if (storedStamina !== null) {
+                        setStamina(storedStamina);
+                    } else if (response.data.stamina !== undefined) {
+                        setStamina(response.data.stamina);
+                    }
+
+                    setError('');
+                } else {
+                    throw new Error('Invalid user data received');
                 }
             } catch (error) {
                 setError('Error fetching user data');
@@ -40,34 +49,6 @@ const Home = () => {
 
         fetchData();
     }, [tg]);
-
-    useEffect(() => {
-        const fetchStaminaLimit = async () => {
-            const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
-            try {
-                const response = await sendTgId({tgId});
-                if (response && response.data && response.data.staminaLimit !== undefined) {
-                    setStaminaLimit(response.data.staminaLimit);
-
-                    const storedStamina = getStoredStamina();
-
-                    if (storedStamina) {
-                        setStamina(storedStamina);
-                        console.log(storedStamina);
-                    } else {
-                        setStamina(response.data.stamina);
-                    }
-                    setError('');
-                } else {
-                    throw new Error('Invalid stamina limit data received');
-                }
-            } catch (error) {
-                setError('Error fetching stamina limit');
-                console.error('Error fetching stamina limit:', error);
-            }
-        };
-        fetchStaminaLimit()
-    }, []);
 
     useEffect(() => {
         const increaseStaminaAutomatically = () => {
@@ -84,7 +65,6 @@ const Home = () => {
 
         return () => clearInterval(interval);
     }, [stamina]);
-
 
     const increaseBalance = () => {
         if (stamina > 0) {
