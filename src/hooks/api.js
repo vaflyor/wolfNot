@@ -40,6 +40,16 @@ const boostInfo = async (data) => {
     }
 };
 
+const sendBalanceRoute = async (data) => {
+    try {
+        const response = await axios.post('http://localhost:80/boost1', data);
+        return response;
+    } catch (error) {
+        console.error('Error sending data:', error);
+        throw error;
+    }
+};
+
 const boostUpdate = async (data) => {
     try {
         const response = await axios.post('http://localhost:80/update-boost-info', data);
@@ -50,4 +60,4 @@ const boostUpdate = async (data) => {
     }
 };
 
-export {sendTgId, updateBalance, getReferralList, boostInfo, boostUpdate};
+export {sendTgId, updateBalance, getReferralList, boostInfo, boostUpdate, sendBalanceRoute};

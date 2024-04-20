@@ -114,3 +114,8 @@
     pointer-events: none;
     opacity: 0.5;
 }
+
+.boost-modal {
+    font-size: 18px;
+    text-align: center;
+}
