@@ -63,10 +63,10 @@ const Boost = () => {
         try {
             const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
             if (operationType === 'multitap') {
-                // window.location.reload();
+                window.location.reload();
                 await boostUpdate({ tgId: tgId, boost: userBoost + 1 });
             } else if (operationType === 'energyLimit') {
-                // window.location.reload();
+                window.location.reload();
                 await boostUpdate({ tgId: tgId, staminaLimit: userStaminaLimit + 1000 });
             }
         } catch (error) {
