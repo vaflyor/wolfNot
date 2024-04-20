@@ -27,7 +27,7 @@ const Boost = () => {
             if (balanceFromLocalStorage) {
                 try {
                     const dataToSend = {
-                        tgId: tg?.initDataUnsafe?.user?.id || 544362566,
+                        tgId: tg?.initDataUnsafe?.user?.id,
                         balance: balanceFromLocalStorage,
                     };
 
@@ -50,7 +50,7 @@ const Boost = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
+                const tgId = tg?.initDataUnsafe?.user?.id;
                 const boostPrices = await boostInfo({tgId: tgId});
                 const staminaPrices = boostPrices.data.staminaPrice;
                 const tapPricesData = boostPrices.data.tapPrice;
@@ -94,7 +94,7 @@ const Boost = () => {
 
     const handleConfirm = async () => {
         try {
-            const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
+            const tgId = tg?.initDataUnsafe?.user?.id;
             const nextPrice = operationType === 'multitap' ? getNextPrice(userBoost, tapPrices) : getNextPrice(userStaminaLimit, energyPrices);
 
             if (coins >= nextPrice) {

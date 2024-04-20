@@ -13,7 +13,7 @@ const Referrals = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
+                const tgId = tg?.initDataUnsafe?.user?.id;
                 const referralList = await getReferralList({tgId});
                 setUserList(referralList.data.referrals);
                 setReferralLink(referralList.data.referralLink.referralLink);
