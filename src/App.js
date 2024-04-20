@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from "./pages/Home";
 import Referral from "./pages/Referral";
 import Boost from "./pages/Boost";
@@ -19,5 +19,4 @@ function App() {
         </Router>
     );
 }
-
 export default App;
