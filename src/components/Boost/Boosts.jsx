@@ -63,11 +63,12 @@ const Boost = () => {
         try {
             const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
             if (operationType === 'multitap') {
+                window.location.reload();
                 await boostUpdate({ tgId: tgId, boost: userBoost + 1 });
             } else if (operationType === 'energyLimit') {
+                window.location.reload();
                 await boostUpdate({ tgId: tgId, staminaLimit: userStaminaLimit + 1000 });
             }
-            closeModal();
         } catch (error) {
             console.error('Error confirming boost:', error);
         }
@@ -118,7 +119,7 @@ const Boost = () => {
                             <div>
                                 <span>{operationPrice}</span><img className={'popup-coin'} src={'./media/coins-solid.svg'} alt={'coin'} />
                             </div>
-                            <a href={''} onClick={handleConfirm} className={'modal-btn'}>Confirm</a>
+                            <a onClick={handleConfirm} className={'modal-btn'}>Confirm</a>
                         </div>
                     </div>
                 </div>

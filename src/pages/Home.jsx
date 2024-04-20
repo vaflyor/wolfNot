@@ -53,7 +53,7 @@ const Home = () => {
         };
 
         fetchData();
-    }, [tg]);
+    }, [tg, staminaLimit]);
 
     useEffect(() => {
         const increaseStaminaAutomatically = () => {
