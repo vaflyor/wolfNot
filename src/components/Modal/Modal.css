@@ -21,7 +21,6 @@
 @keyframes slideInDown {
     0% {
         transform: translateY(-110px);
-        visibility: visible;
     }
     100% {
         transform: translateY(50px);

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './Referrals.css';
-import { getReferralList } from "../../hooks/api";
-import { useTelegram } from "../../hooks/useTelegram";
+import {getReferralList} from "../../hooks/api";
+import {useTelegram} from "../../hooks/useTelegram";
 import Modal from '../Modal/Modal';
 
 const Referrals = () => {
-    const { tg } = useTelegram();
+    const {tg} = useTelegram();
     const [userList, setUserList] = useState([]);
     const [referralLink, setReferralLink] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,7 +14,7 @@ const Referrals = () => {
         const fetchData = async () => {
             try {
                 const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
-                const referralList = await getReferralList({ tgId });
+                const referralList = await getReferralList({tgId});
                 setUserList(referralList.data.referrals);
                 setReferralLink(referralList.data.referralLink.referralLink);
             } catch (error) {
@@ -63,10 +63,11 @@ const Referrals = () => {
                     <img className={'referral-img'} src={'./media/coins-solid.svg'} alt={'coin'}/>
                 </p>
                 <p className={'referral-adress'}>
-                    Click <span onClick={() => copyReferralLinkToClipboard(referralLink)}>here</span> to copy your referral address
+                    Click <span onClick={() => copyReferralLinkToClipboard(referralLink)}>here</span> to copy your
+                    referral address
                 </p>
             </div>
-            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}/>
         </div>
     );
 };

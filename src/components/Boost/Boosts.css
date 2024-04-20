@@ -34,9 +34,12 @@
     text-align: left;
 }
 
-.boost__block-p span {
-    margin-left: 8px;
+.boost__block-text span{
     color: gray;
+}
+
+.boost-block-upgrade {
+    margin: 5px 0;
 }
 
 .popup {
@@ -101,4 +104,9 @@
 .popup-coin {
     width: 30px;
     margin-left: 5px;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
 }

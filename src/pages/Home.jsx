@@ -12,6 +12,9 @@ const Home = () => {
     const [error, setError] = useState('');
     const [staminaLimit, setStaminaLimit] = useState(null);
     const [stamina, setStamina] = useState(null);
+
+    const [boost, setBoost] = useState(null);
+
     const {tg} = useTelegram();
     useBeforeUnload(userData, tg);
 
@@ -28,8 +31,10 @@ const Home = () => {
                     if (response.data.staminaLimit !== undefined) {
                         setStaminaLimit(response.data.staminaLimit);
                     }
+                    if (response.data.boost !== undefined) {
+                        setBoost(response.data.boost)
+                    }
 
-                    // Check if stamina exists in local storage, otherwise, use data from response
                     const storedStamina = getStoredStamina();
                     if (storedStamina !== null) {
                         setStamina(storedStamina);
@@ -52,7 +57,7 @@ const Home = () => {
 
     useEffect(() => {
         const increaseStaminaAutomatically = () => {
-            if (stamina < 1000) {
+            if (stamina < staminaLimit) {
                 setStamina(prevStamina => {
                     const newStamina = prevStamina + 1;
                     setStoredStamina(newStamina);
@@ -69,7 +74,7 @@ const Home = () => {
     const increaseBalance = () => {
         if (stamina > 0) {
             setUserData(prevData => {
-                const newBalance = (prevData.coins || 0) + 1;
+                const newBalance = (prevData.coins || 0) + boost;
                 setStoredBalance(newBalance);
                 return {...prevData, coins: newBalance};
             });
@@ -79,7 +84,7 @@ const Home = () => {
     const reduceStamina = () => {
         if (stamina > 0) {
             setStamina(prevData => {
-                const newStamina = prevData - 1;
+                const newStamina = prevData - boost;
                 setStoredStamina(newStamina);
                 return newStamina;
             });

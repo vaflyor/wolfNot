@@ -30,14 +30,24 @@ const getReferralList = async (data) => {
     }
 };
 
-// const boost = async (data) => {
-//     try {
-//         const response = await axios.post('http://localhost:80/boost', data);
-//         return response;
-//     } catch (error) {
-//         console.error('Error sending data:', error);
-//         throw error;
-//     }
-// };
+const boostInfo = async (data) => {
+    try {
+        const response = await axios.post('http://localhost:80/boost', data);
+        return response;
+    } catch (error) {
+        console.error('Error sending data:', error);
+        throw error;
+    }
+};
 
-export {sendTgId, updateBalance, getReferralList};
+const boostUpdate = async (data) => {
+    try {
+        const response = await axios.post('http://localhost:80/update-boost-info', data);
+        return response;
+    } catch (error) {
+        console.error('Error sending data:', error);
+        throw error;
+    }
+};
+
+export {sendTgId, updateBalance, getReferralList, boostInfo, boostUpdate};
