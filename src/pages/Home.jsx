@@ -53,7 +53,7 @@ const Home = () => {
         };
 
         fetchData();
-    }, [tg, staminaLimit]);
+    }, [tg]);
 
     useEffect(() => {
         const increaseStaminaAutomatically = () => {
@@ -69,7 +69,7 @@ const Home = () => {
         const interval = setInterval(increaseStaminaAutomatically, 1000);
 
         return () => clearInterval(interval);
-    }, [stamina]);
+    }, [stamina, staminaLimit]);
 
     const increaseBalance = () => {
         if (stamina > 0) {
