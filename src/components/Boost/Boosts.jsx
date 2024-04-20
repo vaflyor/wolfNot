@@ -119,7 +119,7 @@ const Boost = () => {
                             <div>
                                 <span>{operationPrice}</span><img className={'popup-coin'} src={'./media/coins-solid.svg'} alt={'coin'} />
                             </div>
-                            <button onClick={handleConfirm} className={'modal-btn'}>Confirm</button>
+                            {/*<button onClick={handleConfirm} className={'modal-btn'}>Confirm</button>*/}
                         </div>
                     </div>
                 </div>
