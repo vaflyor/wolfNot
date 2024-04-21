@@ -2,7 +2,7 @@ import axios from "axios";
 
 const sendTgId = async (data) => {
     try {
-        const response = await axios.post('http://localhost:80/', data);
+        const response = await axios.post('http://3.78.209.181:80/', data);
         return response;
     } catch (error) {
         console.error('Error sending data:', error);
@@ -12,7 +12,7 @@ const sendTgId = async (data) => {
 
 const updateBalance = async (data) => {
     try {
-        const response = await axios.post('http://localhost:80/update-balance', data);
+        const response = await axios.post('http://3.78.209.181:80/update-balance', data);
         return response;
     } catch (error) {
         console.error('Error sending data:', error);
@@ -22,7 +22,7 @@ const updateBalance = async (data) => {
 
 const getReferralList = async (data) => {
     try {
-        const response = await axios.post('http://localhost:80/referral', data);
+        const response = await axios.post('http://3.78.209.181:80/referral', data);
         return response;
     } catch (error) {
         console.error('Error sending data:', error);
@@ -32,7 +32,7 @@ const getReferralList = async (data) => {
 
 const boostInfo = async (data) => {
     try {
-        const response = await axios.post('http://localhost:80/boost', data);
+        const response = await axios.post('http://3.78.209.181:80/boost', data);
         return response;
     } catch (error) {
         console.error('Error sending data:', error);
@@ -42,7 +42,7 @@ const boostInfo = async (data) => {
 
 const sendBalanceRoute = async (data) => {
     try {
-        const response = await axios.post('http://localhost:80:80/boost1', data);
+        const response = await axios.post('http://3.78.209.181:80:80/boost1', data);
         return response;
     } catch (error) {
         console.error('Error sending data:', error);
@@ -52,7 +52,7 @@ const sendBalanceRoute = async (data) => {
 
 const boostUpdate = async (data) => {
     try {
-        const response = await axios.post('http://localhost:80/update-boost-info', data);
+        const response = await axios.post('http://3.78.209.181:80/update-boost-info', data);
         return response;
     } catch (error) {
         console.error('Error sending data:', error);
