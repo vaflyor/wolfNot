@@ -13,7 +13,7 @@ export const useBeforeUnload = (userData, tg) => {
                     localStorage.removeItem('stamina');
 
                     const dataToSend = {
-                        tgId: tg?.initDataUnsafe?.user?.id,
+                        tgId: tg?.initDataUnsafe?.user?.id || 544362566,
                         balance: balanceFromLocalStorage,
                         stamina: staminaFromLocalStorage
                     };

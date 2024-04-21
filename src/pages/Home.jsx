@@ -21,7 +21,7 @@ const Home = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const tgId = tg?.initDataUnsafe?.user?.id;
+                const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
 
                 const response = await sendTgId({tgId});
                 if (response && response.data) {

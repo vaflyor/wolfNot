@@ -27,7 +27,7 @@ const Boost = () => {
             if (balanceFromLocalStorage) {
                 try {
                     const dataToSend = {
-                        tgId: tg?.initDataUnsafe?.user?.id,
+                        tgId: tg?.initDataUnsafe?.user?.id || 544362566,
                         balance: balanceFromLocalStorage,
                     };
 
@@ -50,7 +50,7 @@ const Boost = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const tgId = tg?.initDataUnsafe?.user?.id;
+                const tgId = tg?.initDataUnsafe?.user?.id || 544362566;
                 const boostPrices = await boostInfo({tgId: tgId});
                 const staminaPrices = boostPrices.data.staminaPrice;
                 const tapPricesData = boostPrices.data.tapPrice;
